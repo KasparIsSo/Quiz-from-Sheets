@@ -1,0 +1,105 @@
+$pFont:       'Times New Roman', serif;
+$sFont:       'Open Sans', sans-serif;
+$pColor:      hsla( 360,  75%,  70%, 1 );
+$sColor:      hsla( 190,  66%,  60%, 1 );
+
+$white:       hsla(   0,   0%, 100%, 1 );
+$white50op:   hsla(   0,   0%, 100%, .5 );
+$grey:        hsla(   0,   0%,  60%, 1 );
+$grey90b:     hsla(   0,   0%,  90%, 1 );
+$black:       hsla(   0,   0%,  20%, 1 );
+$black50op:   hsla(   0,   0%,  20%, .5 );
+$red1:        hsla(   0,  90%,  60%, 1 );
+$green1:      hsla( 140,  90%,  60%, 1 );
+$green1h:     hsla( 140,  90%,  70%, 1 );
+
+$width:       600;
+$height:      4 * $width / 3;
+
+$break-1600: 1600px;
+$break-1440: 1440px;
+$break-1200: 1200px;
+$break-1034: 1034px;
+$break-778:   778px;
+$break-520:   520px;
+$break-420:   420px;
+
+@media screen and (max-width: $break-1034) {
+	$width:       600;
+	$height:      4 * $width / 3;
+}
+
+@media screen and (max-width: $break-778) {
+	// $width:       600;
+	// $height:      4 * $width / 3;
+}
+
+@media screen and (max-width: $break-420) {
+	$width:       100vw;
+	$height:      4 * $width / 3;
+}
+
+
+@mixin e($element) {
+	&__#{$element} {
+		@content;
+	}
+}
+
+@mixin m($modifier) {
+	&--#{$modifier} {
+		@content;
+	}
+}
+
+@mixin transition($time) {
+	transition: $time;
+	-webkit-transition: $time;
+	-moz-transition: $time;
+	-o-transition: $time;
+}
+
+@mixin blur($length) {
+	-webkit-filter: blur($length);
+	-moz-filter: blur($length);
+	-o-filter: blur($length);
+	-ms-filter: blur($length);
+	filter: blur($length);
+}
+
+@mixin grayscale($percent) {
+	-webkit-filter: grayscale($percent);
+	-moz-filter: grayscale($percent);
+	-o-filter: grayscale($percent);
+	-ms-filter: grayscale($percent);
+	filter: grayscale($percent);
+}
+
+@mixin filterGB($length, $percent) {
+	-webkit-filter: blur($length) grayscale($percent);
+	-moz-filter: blur($length) grayscale($percent);
+	-o-filter: blur($length) grayscale($percent);
+	-ms-filter: blur($length) grayscale($percent);
+	filter: blur($length) grayscale($percent);
+}
+
+
+@mixin defaultBorder {
+	// box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	border: {
+		width: 5px;
+		style: solid;
+		color: $sColor;
+	}
+}
+
+@mixin defaultDropShadow {
+	box-shadow: 0px 2px 8px hsla( 0, 0%, 30%, .4 );
+}
+
+@mixin raisedDropShadow {
+	box-shadow: 0px 4px 8px hsla( 0, 0%, 30%, .4 );
+}

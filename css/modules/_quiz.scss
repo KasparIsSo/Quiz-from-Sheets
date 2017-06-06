@@ -1,0 +1,506 @@
+// body {
+// 	background-color: #222222;
+// }
+
+.quiz {
+	position: relative;
+	width: $width * 1px;
+	height: $height * 1px;
+	overflow: hidden;
+
+	// background-color: $white;
+
+	@include defaultDropShadow;
+
+	@media screen and (max-width: $break-1034) {
+
+	}
+
+	@media screen and (max-width: $break-778) {
+		// $width:       600;
+		// $height:      4 * $width / 3;
+	}
+
+	@media screen and (max-width: $break-420) {
+		width:       100vw;
+		height:      4 * 100vw / 3;	
+	}
+
+	@include m('theme-can150') {
+
+	}
+
+	@include e('splash') {
+		width: 100%;
+		height: 100%;
+		background: {
+			image: url('https://i.kinja-img.com/gawker-media/image/upload/s--FqBo84zQ--/c_scale,fl_progressive,q_80,w_800/1478458281490101798.jpg');
+			repeat: no-repeat;
+			size: cover;
+			position: center;
+		}
+
+		@include filterGB(0px, 100%);
+		opacity: .5;
+
+		@include m('text'){
+			color: $red1;
+			position: absolute;
+			display: block;
+			width: 65%;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			font: {
+				size: 2.4em;
+				family: 'Times New Roman', serif;
+				weight: 600;
+			}
+			line: {
+				height: 1.8em;
+			}
+			text: {
+				align: center;
+				transform: uppercase;
+			}
+			// @include transition(1.2s);
+			@media screen and (max-width: $break-1034) {
+
+			}
+
+			@media screen and (max-width: $break-778) {
+				// $width:       600;
+				// $height:      4 * $width / 3;
+			}
+
+			@media screen and (max-width: $break-420) {
+				font: {
+					size: 1.8em;
+				}
+			}
+		}
+	}
+
+	@include e('nav') {
+		overflow: hidden;
+		position: absolute;
+		width: $width * 1px;
+		height: $height * .2px;
+		background: {
+			// color: $black;
+			color: $white;
+		}
+		padding: 30px;
+		box-sizing: border-box;
+		top: $height * 1px;
+		z-index: 1;
+
+		@include m('splash') {
+			top: $height * .8px;
+		}
+
+		@media screen and (max-width: $break-1034) {
+
+		}
+
+		@media screen and (max-width: $break-778) {
+			// $width:       600;
+			// $height:      4 * $width / 3;
+		}
+
+		@media screen and (max-width: $break-420) {
+			padding:     15px;
+			top:         4 * 100vw / 3;	
+			width:       100vw;
+			height:      .2 * 4 * 100vw / 3;	
+
+				@include m('splash') {
+					top:  .8 * 4 * 100vw / 3;	
+				}
+		}
+
+	}
+
+	@include e('navNext') {
+		overflow: hidden;
+		// position: absolute;
+		// width: $width * 1px;
+		// height: $height * .2px;
+		width: 100%;
+		height: 100%;
+		background: {
+			color: $green1;
+		}
+		// top: $height * 1px;
+		z-index: 1;
+
+		box-sizing: border-box;
+
+		@include defaultDropShadow;
+		@include transition(.4s);
+
+		&:hover {
+			background: {
+				color: $green1h;
+			}
+
+			box-shadow: 0px 4px 12px hsla( 0, 0%, 30%, .4 );
+		}
+
+		@media screen and (max-width: $break-1034) {
+
+		}
+
+		@media screen and (max-width: $break-778) {
+			// $width:       600;
+			// $height:      4 * $width / 3;
+		}
+
+		@media screen and (max-width: $break-420) {
+			// width:       100vw;
+			// height:      4 * 100vw / 6;	
+		}
+
+		@include m('text') {
+			
+			font: {
+				family: 'Open Sans', sans-serif;
+				weight: 400; 
+			}
+			text: {
+				transform: uppercase;
+				align: center;
+			}
+			line-height: 1.4em;
+			letter-spacing: .1em;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			display: block;
+
+			@media screen and (max-width: $break-1034) {
+				font: {
+					size: 1.5em;
+				}
+			}
+
+			@media screen and (max-width: $break-778) {
+				font: {
+					size: 1.3em;
+				}
+			}
+
+			@media screen and (max-width: $break-420) {
+				font: {
+					size: 1em;
+				}	
+			}
+
+		}
+	}
+
+	@include e('questionBackground') {
+
+		z-index: -1;
+
+		background: {
+			size: cover;
+			// size: auto 100%;
+			position: center;
+			repeat: no-repeat;
+			color: $black;
+		}
+
+		overflow: hidden;
+		@include filterGB(40px, 100%);
+		@include transition(1.2s);
+		opacity: .4;
+		position: absolute;
+		width: $width * 1px;
+		height: $height * 1px;
+
+		@media screen and (max-width: $break-1034) {
+
+		}
+
+		@media screen and (max-width: $break-778) {
+			// $width:       600;
+			// $height:      4 * $width / 3;
+		}
+
+		@media screen and (max-width: $break-420) {
+			@include filterGB(20px, 100%);
+			width:       100vw;
+			height:      4 * 100vw / 3;		
+		}
+
+
+
+		&.active {
+			@include filterGB(0px, 100%);
+			opacity: 1;
+		}
+
+		@include m('show') {
+			// &:active { 
+				opacity: .4;
+			// }
+			@include filterGB(0px, 100%);
+
+			&.active {
+				opacity: .2;
+			}
+		}
+
+	}
+
+	@include e('question') {
+
+		position: relative;
+		width: 100%;
+		height: $height * .5px;
+		@include transition(1.2s);
+
+		@media screen and (max-width: $break-1034) {
+
+		}
+
+		@media screen and (max-width: $break-778) {
+			// $width:       600;
+			// $height:      4 * $width / 3;
+		}
+
+		@media screen and (max-width: $break-420) {
+			width:       100vw;
+			height:      4 * 100vw / 6;		
+		}
+
+		@include m('text'){
+
+			color: $white;
+			display: block;
+			width: 65%;
+			font: {
+				size: 1.8em;
+				family: 'Times New Roman', serif;
+			}
+			line: {
+				height: 1.4em;
+			}
+			text: {
+				align: center;
+			}
+			@include transition(1.2s);
+
+			@media screen and (max-width: $break-1034) {
+				font: {
+					size: 1.6em;
+				}
+			}
+
+			@media screen and (max-width: $break-778) {
+				font: {
+					size: 1.4em;
+				}
+			}
+
+			@media screen and (max-width: $break-420) {
+				font: {
+					size: 1.2em;
+				}	
+			}
+
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+
+			// &.active {
+			// 	// color: $black;
+			// 	opacity: 1;
+			// }
+
+		}
+
+	}
+
+	@include e('answer') {
+
+		width: $width * 1px - 40px;
+		height: $height * .5px - 80px;
+		padding: 20px;
+
+		@media screen and (max-width: $break-1034) {
+
+		}
+
+		@media screen and (max-width: $break-778) {
+			// $width:       600;
+			// $height:      4 * $width / 3;
+		}
+
+		@media screen and (max-width: $break-420) {
+			width: 100vw;
+			height: 4 * 90vw / 6;		
+			padding: 0;
+		}
+	}
+
+	@include e('answerButton') {
+
+		position: relative;
+		width: $width * .5px - 40px;
+		height: $height * .25px - 60px;
+		float: left;
+		margin: 10px;
+		background: {
+			color: $white50op;
+		}
+
+		border: {
+			// width: 1px;
+			// color: $black;
+			// style: solid;
+			radius: 2px;
+		}
+
+		@media screen and (max-width: $break-1034) {
+
+		}
+
+		@media screen and (max-width: $break-778) {
+			// $width:       600;
+			// $height:      4 * $width / 3;
+		}
+
+		@media screen and (max-width: $break-420) {
+			width: 100vw * .5;
+			// height: 100vw * .5 - 4vw;
+			height: 4 * 85vw / 12;
+			float: left;
+			margin: 0;
+			// margin: 2vw;
+			border: {
+				width: 1px;
+				color: $grey;
+				style: solid;
+				radius: 0px;
+			}
+		}
+
+		box: {
+			sizing: border-box;
+		}
+
+		@include transition(.5s);
+
+		@include m('text') {
+
+			font: {
+				family: 'Open Sans', sans-serif;
+				weight: 300; 
+				size: 1.2em;
+			}
+			text: {
+				transform: uppercase;
+				align: center;
+			}
+			line-height: 1.4em;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			display: block;
+			width: 80%;
+
+			@media screen and (max-width: $break-1034) {
+				font: {
+					size: 1.2em;
+				}
+			}
+
+			@media screen and (max-width: $break-778) {
+				font: {
+					size: 1em;
+				}
+			}
+
+			@media screen and (max-width: $break-420) {
+				font: {
+					size: .8em;
+				}	
+			}
+
+		}
+
+		&:hover {
+			background: {
+				color: $grey90b;
+			}
+			
+			// color: $white;
+
+		}
+
+		&.activeR {
+			background: {
+				color: $green1;
+			}
+		}
+
+		&.activeW {
+			background: {
+				color: $red1;
+			}
+		}
+
+		// &.active {
+		// 	background: {
+		// 		color: $green1;
+		// 	}
+
+		// 	// color: $white;
+
+		// }
+
+	}
+
+	@include e('breadcrumb') {
+		width: 100px;
+		// height: 20px;
+		// background-color: $white;
+		padding: 0;
+		margin: 0 auto;
+
+		@include m('node'){
+
+			display: inline-block;
+			float: left;
+			width: 8px;
+			height: 8px;
+			margin: 0 6px;
+
+			border: {
+				radius: 100%;
+			}
+
+			background: {
+				color: $white;
+			}
+
+			&.active {
+				background: {
+					color: $red1;
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+
+

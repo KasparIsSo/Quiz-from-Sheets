@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Quiz</title>
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="css/quiz.css">
+		<script src="https://d3js.org/d3.v4.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
+		
+	</head>
+	<body>
+
+		<div id = "quiz" class = "quiz quiz--theme-can150">
+
+			<div class = "quiz__splash">
+			</div>
+
+			<p class = "quiz__splash--text">Canada 150 fun times quiz</p>
+
+			<div class = "quiz__nav quiz__nav--splash">
+
+				<div class = "quiz__navNext">
+					<p class = "quiz__navNext--text">Start</p>
+				</div>
+
+			</div>
+
+			<!-- <div class = "quiz__nav">
+
+				<div class = "quiz__navNext">
+					<p class = "quiz__navNext--text">Next Question</p>
+				</div>
+
+			</div> -->
+
+			<!-- <div class = "quiz__question">
+
+				<div class = "quiz__questionBackground" style = "background-image: url('https://consequenceofsound.files.wordpress.com/2015/11/justin-bieber-purpose-songs.png')"></div>
+
+				<div class = "quiz__questionBackground quiz__questionBackground--show"></div>
+
+				<p class = "quiz__question--text">Which one of these Canadian singers were born in 1994?</p>
+			</div>
+
+			<div class = "quiz__answer">
+				<div class = "quiz__answerButton">
+					<p class = "quiz__answerButton--text">Justin Bieber</p>
+				</div>
+
+				<div class = "quiz__answerButton">
+					<p class = "quiz__answerButton--text">Alessia Cara</p>
+				</div>
+
+				<div class = "quiz__answerButton">
+					<p class = "quiz__answerButton--text">Drake</p>
+				</div>
+
+				<div class = "quiz__answerButton">
+					<p class = "quiz__answerButton--text">The Weeknd</p>
+				</div>
+			</div> -->
+
+			<!-- <div class = "quiz__breadcrumb">
+				<div class = "quiz__breadcrumb--node"></div>
+				<div class = "quiz__breadcrumb--node"></div>
+				<div class = "quiz__breadcrumb--node"></div>
+				<div class = "quiz__breadcrumb--node"></div>
+				<div class = "quiz__breadcrumb--node"></div>
+			</div> -->
+
+		</div>
+
+		<script type="text/javascript">
+		var data = [];
+
+		function getContent(json) {
+			// console.log(json.feed);
+			var sectionName;
+			var section = [];
+			for ( i = 0; i < json.feed.entry.length; i++ ) {
+
+				if ( i == 0 ) {
+					sectionName = json.feed.entry[i].gsx$section.$t;
+				}
+
+				if ( sectionName != json.feed.entry[i].gsx$section.$t ) {
+
+					data.push(section);
+					section = [];
+					sectionName = json.feed.entry[i].gsx$section.$t;
+
+				}
+
+				var answers = [json.feed.entry[i].gsx$a1.$t, 
+							json.feed.entry[i].gsx$a2.$t, 
+							json.feed.entry[i].gsx$a3.$t,
+							json.feed.entry[i].gsx$a4.$t]
+
+				var stats = {
+					sec:     json.feed.entry[i].gsx$section.$t,
+					q:       json.feed.entry[i].gsx$question.$t,
+					qImg:    json.feed.entry[i].gsx$questionimage.$t,
+					a:       json.feed.entry[i].gsx$correct.$t,
+					ans:     answers
+				}
+
+				section.push(stats);
+
+				if ( i == ( json.feed.entry.length - 1 ) ) {
+
+					data.push(section);
+
+				}
+
+			}
+			// byTeamAcc();
+		}
+
+        
+        // Set the domain to match thestar.com so we can access the iframe from within its content
+        // document.domain = "thestar.com";
+
+        // Grab the spreadsheet ID pasted at the end of the URL and append it to a script call
+        var fullUrl = window.location.href;
+        var sheetID = "1y_Hwce3a5075QGORzBzFNO-PRGO86SOetvN1433e-8c";
+        // var sheetID = "18fIh-7vWgH9reoEtJCNXXqarNImcE0ZPKti-ClYvQks";
+        // var sheetID = location.search.substring(1);
+        // var urlStart = 'https://spreadsheets.google.com/feeds/list/';
+        // var urlEnd = '/1/public/values?alt=json-in-script&callback=getContent'; 
+
+
+        // document.write("<script src="+ urlStart + sheetID + urlEnd + "><\/script>");
+
+        document.write("<script src="+ "https://spreadsheets.google.com/feeds/list/" + sheetID + "/1/public/values?alt=json-in-script&callback=getContent" + "><\/script>");
+
+		</script>
+		<script src="js/quiz.js"></script>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
